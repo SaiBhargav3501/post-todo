@@ -1,0 +1,73 @@
+<p>todos works!</p>
+
+<h1>Todos in admin module</h1>
+<table>
+    <tr>
+      <th>UserId</th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Remarks</th>
+      <th>Action Del</th>
+      <th>Action Edit</th>
+    </tr>
+
+    <tr *ngFor="let data of allList">
+        <td>{{data.userId}}</td>
+        <td>{{data.id}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.completed}}</td>
+        <td><button (click)="onDleteTodo(data.id)">Delete</button></td>
+        <!-- <button class="btn btn-primary" (click)="open(deleteModal, allList)">Edit</button> -->
+        <td><button (click)="onEditTodo(data.id)" class="btn btn-primary" (click)="open(deleteModal, allList)">Edit</button></td>
+
+    </tr>
+    
+   
+  </table>
+
+
+
+
+
+
+
+    <!-- Modals -->
+
+<ng-template #deleteModal let-modal>
+
+   <div class="modal-header">
+    
+   <h4 class="modal-title" id="modal-basic-title">Update tile</h4>
+    
+   <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    
+  </div>
+    
+  <div class="modal-body">
+    
+<form [formGroup]="form" >
+    
+ <div class="mb-3">
+<div class="form-group">
+    
+ <textarea cols="50" rows="5" class="form-control" formControlName="todoUpdate">{{updateTodo}}</textarea>
+    
+     </div>
+    
+    </div>
+    
+    </form>
+    
+ </div>
+    
+    <div class="modal-footer">
+    
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    
+     <button type="button" class="btn btn-outline-dark" (click)="onclickupdatetile()">Update</button>
+    
+    </div>
+    
+    </ng-template>
+
+    
